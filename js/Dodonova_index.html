@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+    <style>
+        .container{
+            margin-top: 100px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            margin-left: -20px;
+        }
+        td{
+            width: 100px;
+        }
+        table{
+            text-align: center;
+        }
+        th{
+            text-align: center;
+        }
+        ul{
+            list-style: none;
+            margin-top: 100px;
+            margin-left: 45%;
+        }
+    </style>
+</head>
+<body>
+                                        <!-- задание 1 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <table id="table1" border="1" cellpadding="4" cellspacing="0">
+                    <th>1 - 5</th>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-1">
+                <button id="button">Добавить</button>
+            </div>
+            <div class="col-md-1">
+                <table id="table2" border="1" cellpadding="4" cellspacing="0">
+                    <th>200 - 205</th>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+                                        <!-- задание 2 -->
+
+<!--    <ul>
+        <li><input type="checkbox">«Сильный»</li>
+        <li><input type="checkbox">«Смелый»</li>
+        <li><input type="checkbox">«Добрый»</li>
+        <li><input type="checkbox">«Умный»</li>
+        <li><button>Добавить</button></li>
+    </ul>-->
+
+                                        <!-- задание 3 -->
+
+<!--   <ul>
+       <li>Красный</li>
+       <li>Белый</li>
+       <li>Синий</li>
+       <li>Черный</li>
+       <li>Розовый</li>
+       <li>Какой-нибудь</li>
+       <li>Серый</li>
+       <li>Светло-голубой</li>
+       <li>Красивый</li>
+       <li>Очень красивый</li>
+   </ul>
+    <div style="margin-left: 30%">
+        <h4>Введите слово:</h4>
+        <input type="text" size="30" style="float: left">
+        <button style="margin-left: 50px">Найти</button>
+    </div>-->
+
+
+
+    <script>
+    /*1. В клиентской области окна приложения создать 2 списка, первый из которых
+     содержит числа от 1 до 5, второй – числа от 200 до 205. При нажатии кнопки «Добавить»
+     в список с фокусом ввода добавить очередное число.*/
+
+    var arr1 = [1, 2, 3, 4, 5];
+    var arr2 = [200, 201, 202, 203, 204, 205];
+    var btn = document.getElementById("button");
+    var list1 = document.getElementById("table1");
+    var list2 = document.getElementById("table2");
+    var f = 0, i = 0, k = 0;
+    list1.addEventListener("click", OnFocus);
+    list2.addEventListener("click", OnFocus);
+
+
+    function OnClick(){
+        if(f == 1) {
+            if(i < arr1.length){
+                list1.rows[i + 1].cells[0].innerHTML = arr1[i];
+                i++;
+            }
+        }
+        if(f == 2) {
+            if(k < arr2.length){
+                list2.rows[k + 1].cells[0].innerHTML = arr2[k];
+                k++;
+            }
+        }
+    }
+
+    function OnFocus(){
+        if(this == list1){
+            f = 1;
+        }
+        if(this == list2){
+            f = 2;
+        }
+        btn.addEventListener("click", OnClick);
+    }
+//##############################################################################
+
+/*    2. На форме разместить 4 элемента Check Box c надписями «Сильный», «Смелый», «Добрый», «Умный».
+    При нажатии на кнопку «Добавить» выбранные качества отображаются с использованием MessageBox.*/
+
+/*    var list = document.getElementsByTagName("ul")[0];
+     var btn = document.getElementsByTagName("button")[0];
+     var message = [];
+     btn.addEventListener("click", OnClick);
+
+     function OnClick(){
+     for(var i = 0; i < list.children.length - 1; i++){
+     if(list.children[i].children[0].checked){
+     message.push(list.children[i].textContent)
+     }
+     }
+     alert(message);
+     message.length = 0;
+     }*/
+
+//#####################################################################################################
+
+/*    3. На форме разместить список строк, однострочный редактор и кнопка «Найти».
+    При нажатии на кнопку найти строку из редактора в списке строк. Если найти не удалось, то сообщить об этом.*/
+
+/*    var string;
+    var list = document.getElementsByTagName("ul")[0];
+    var btn = document.getElementsByTagName("button")[0];
+    btn.addEventListener("click", OnClick);
+
+    function OnClick(){
+        string = document.getElementsByTagName("input")[0].value;
+        var tmp = FindLine();
+        if( tmp >= 0){
+            list.children[tmp].style.color= "red";
+            var delay = setTimeout(function(){
+                list.children[tmp].style.color= "black";
+            }, 1000);
+            delay();
+        }
+        else{
+            alert("Нет такого слова!");
+        }
+    }
+
+    /!**
+     * @return {number}
+     *!/
+    function FindLine(){
+        for(var i = 0; i < list.children.length; i++){
+            if(list.children[i].innerHTML.toLowerCase() == string.toLowerCase()){
+                return i;
+            }
+        }
+        return -1;
+    }*/
+    </script>
+</body>
+</html>
