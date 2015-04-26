@@ -5,6 +5,7 @@
 #include<vector>
 #include<iostream>
 #include<cstdio>
+#include<list>
 using namespace std;
 
 #define ID_BUTTON1 1001
@@ -19,6 +20,25 @@ using namespace std;
 #define ID_CHILD 1
 #define ID_LIST1 500
 #define ID_LIST2 501
+#define ID_LIST3 502
+#define ID_LIST4 503
+#define ID_LIST5 504
+#define ID_LIST6 505
+#define ID_LIST7 506
+#define ID_LIST8 507
+#define ID_LIST9 508
+#define ID_LIST10 509
+#define ID_LIST11 510
+#define ID_LIST12 511
+#define ID_LIST13 512
+#define ID_LIST14 513
+#define ID_LIST15 514
+#define ID_LIST16 515
+#define ID_LIST17 516
+#define ID_LIST18 517
+#define ID_LIST19 518
+#define ID_LIST20 519
+
 #define ID_CHECK1 50
 #define ID_CHECK2 51
 #define ID_CHECK3 52
@@ -83,6 +103,90 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine
 	return (int)msg.wParam;
 }
 
+class Cell {
+	string name;
+	string owner;
+	int cost;
+	int penalty;
+
+public:
+
+	Cell() {
+		name = "";
+		owner = "";
+		cost = 0;
+		penalty = 0;
+	}
+
+	void SetName(string s) {
+		name = s;
+	}
+
+	void SetOwner(string s) {
+		owner = s;
+	}
+
+	void SetCost(int n) {
+		cost = n;
+	}
+
+	void SetPenalty(int n) {
+		penalty = n;
+	}
+
+	int GetCost() {
+		return cost;
+	}
+
+	int GetPenalty() {
+		return penalty;
+	}
+
+	string GetName() {
+		return name;
+	}
+
+	string GetOwner() {
+		return owner;
+	}
+
+};
+
+class Person {
+	string name;
+	int money;
+public:
+	Person() {
+		name = "";
+		money = 1000;
+	}
+
+	void SetName(string s) {
+		name = s;
+	}
+
+	void SetMoney(int n) {
+		money = n;
+	}
+
+	string GetName() {
+		return name;
+	}
+
+	int GetMoney() {
+		return money;
+	}
+};
+
+list<Cell>listbox_arr;
+int size = 20;
+
+void SetArr() {
+	int id = 500;
+	for (int i = 0; i < size; i++, id++) {
+		listbox_arr.push_back(new Cell());
+	}
+}
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
 
@@ -90,7 +194,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	switch (message) {
 	case WM_COMMAND:
 		if (LOWORD(wParam) == MU_FILE_QUIT) {
-			SendMessage(hwnd, WM_CLOSE, 0, 0);
+			
 		}
 
 
