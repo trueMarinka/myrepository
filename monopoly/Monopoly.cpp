@@ -84,7 +84,7 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine
 		WindowsClass,
 		Title,
 		WS_OVERLAPPEDWINDOW,
-		100, 100, width, heigth,		// х у ширина высота
+		100, 100, 1200, 700,		// х у ширина высота
 		NULL, NULL,
 		hinst, NULL);
 
